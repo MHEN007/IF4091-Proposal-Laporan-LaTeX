@@ -1,0 +1,92 @@
+% \usepackage[utf8]{inputenc}
+% \usepackage{amsfonts, amsmath, amssymb, amsthm}
+% \usepackage[a4paper, left=4cm, top=3cm, right=3cm, bottom=3cm]{geometry}
+% \usepackage{graphicx}
+% \usepackage{tgtermes}
+% \usepackage[indonesian]{babel}
+% \usepackage[hidelinks]{hyperref}
+\usepackage[notocbib]{apacite}
+% \usepackage{titlesec}
+% \usepackage{titling}
+% \usepackage{titletoc}
+\usepackage{setspace}
+\usepackage[titles]{tocloft}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{times}
+\usepackage{graphicx} % For images
+\usepackage{listings} % For code snippets
+\usepackage[utf8]{inputenc}
+\usepackage[top=4cm, left=4cm, bottom=3cm, right=3cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titletoc}
+\usepackage{titlesec}
+\usepackage{pdfpages}
+\usepackage[indonesian]{babel}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{titling}
+
+\input{config/hyphenation}
+
+% Document Configuration
+\setlength{\footskip}{45pt}
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+\addto{\captionsindonesian}{\renewcommand{\chaptername}{\uppercase{BAB}}}
+\renewcommand{\baselinestretch}{1.5}
+\addto{\captionsindonesian}{\renewcommand{\contentsname}{\uppercase{Daftar Isi}}}
+\addto{\captionsindonesian}{\renewcommand{\listfigurename}{\uppercase{Daftar Gambar}}}
+\addto{\captionsindonesian}{\renewcommand{\listtablename}{\uppercase{Daftar Tabel}}}
+\addto{\captionsindonesian}{\renewcommand{\bibname}{\uppercase{Daftar Pustaka}}}
+\addto{\captionsindonesian}{\renewcommand{\appendixname}{Lampiran}}
+
+% \renewcommand{\BBAA}{dan}
+\renewcommand{\BBAB}{dan}
+\renewcommand{\BOthers}{dkk}
+
+\bibliographystyle{apacite}
+
+\titleformat{\chapter}[display]
+{\centering\large\bfseries}
+{\uppercase{\chaptertitlename}~\thechapter}
+{0pt}
+{\uppercase}
+
+\titlespacing*{\chapter}{0pt}{-24pt}{40pt}
+
+\titleformat{\section}[hang]
+{\normalsize\bfseries}
+{\thesection}
+{1em}
+{}
+
+\titleformat{\subsection}[hang]
+{\normalsize\bfseries}
+{\thesubsection}
+{1em}
+{}
+
+\titlecontents{chapter}[0em]{}{\bfseries\MakeUppercase\chaptertitlename~\thecontentslabel\ \MakeUppercase}{\bfseries}{\bfseries\titlerule*[0.8pc]{.}\contentspage}
+
+\titlecontents{figure}[0em]{}{\figurename~\thecontentslabel\quad}{\bfseries}{\titlerule*[0.8pc]{.}\contentspage}
+
+\titlecontents{table}[0em]{}{\tablename~\thecontentslabel\quad}{\bfseries}{\titlerule*[0.8pc]{.}\contentspage}
+
+% Daftar Lampiran
+\newcommand{\listappendixname}{\MakeUppercase{Daftar Lampiran}}
+\newlistof{appendix}{app}{\listappendixname}
+
+\newcommand{\appendixchapter}[1]{
+    \chapter{#1}
+    \addcontentsline{app}{appendix}{\protect\bfseries\MakeUppercase{Lampiran~\numberline{\thechapter.}#1}}\par
+}
+\newcommand{\appendixsection}[1]{
+    \section{#1}
+    \addcontentsline{app}{appendix}{\protect\hspace{1.5em}\thesection\quad#1}\par
+}

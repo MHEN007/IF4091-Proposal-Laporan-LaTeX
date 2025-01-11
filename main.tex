@@ -1,0 +1,49 @@
+\documentclass[a4paper, 12pt]{report}
+
+\input{config/config.sty}
+
+% CONTENT 
+\title{$<$CONTOH JUDUL: PERANCANGAN ANTARMUKA SISTEM INFORMASI DI PUSKESMAS DAERAH PEDESAAN MENGGUNAKAN USER CENTERED DESIGN$>$}
+\author{$<$NAMA MAHASISWA$>$ \\ NIM: $<$NIM MAHASISWA$>$}
+\date{}
+
+\begin{document}
+
+\include{chapters/cover}
+
+\pagestyle{plain}
+\pagenumbering{gobble}
+\include{chapters/lembar-pengesahan}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\tableofcontents
+
+\listofappendix
+
+\listoffigures
+
+\listoftables
+\newpage
+
+\include{chapters/pendahuluan}
+\include{chapters/kajianpustaka}
+\include{chapters/analisis-masalah}
+\include{chapters/Rencana-Pelaksanaan}
+
+\begingroup
+\setstretch{1.0}
+\bibliography{references/references}
+\endgroup
+
+\appendix
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+\titleformat{\chapter}[block]
+{\large\bfseries}
+{\chaptertitlename~\thechapter.~}
+{0pt}
+{}
+
+\include{appendix/Diagram}
+\end{document}
