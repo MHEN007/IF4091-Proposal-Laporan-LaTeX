@@ -11,6 +11,9 @@
 \usepackage{titletoc}
 \usepackage{setspace}
 \usepackage[titles]{tocloft}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{multicol}
 
 \input{config/hyphenation}
 
@@ -52,6 +55,12 @@
 {1em}
 {}
 
+\titleformat{\subsubsection}[hang]
+{\normalsize\bfseries}
+{\thesubsubsection}
+{1em}
+{}
+
 \titlecontents{chapter}[0em]{}{\bfseries\MakeUppercase\chaptertitlename~\thecontentslabel\ \MakeUppercase}{\bfseries}{\bfseries\titlerule*[0.8pc]{.}\contentspage}
 
 \titlecontents{figure}[0em]{}{\figurename~\thecontentslabel\quad}{\bfseries}{\titlerule*[0.8pc]{.}\contentspage}
@@ -63,10 +72,44 @@
 \newlistof{appendix}{app}{\listappendixname}
 
 \newcommand{\appendixchapter}[1]{
-    \chapter{#1}
-    \addcontentsline{app}{appendix}{\protect\bfseries\MakeUppercase{Lampiran~\numberline{\thechapter.}#1}}\par
+    \refstepcounter{chapter}
+    \chapter*{\appendixname~\thechapter.~#1}
+    \addcontentsline{app}{appendix}{\protect\bfseries\MakeUppercase{\appendixname~\numberline{\thechapter.}#1}}\par
 }
+
 \newcommand{\appendixsection}[1]{
-    \section{#1}
+    \refstepcounter{section}
+    \section*{\thesection.~#1}
     \addcontentsline{app}{appendix}{\protect\hspace{1.5em}\thesection\quad#1}\par
 }
+
+% Listings Config
+\lstdefinestyle{mystyle}{
+    basicstyle=\ttfamily\footnotesize\setstretch{1},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single
+}
+
+\lstset{style=mystyle}
+
+\renewcommand{\lstlistingname}{Kode}
+\renewcommand{\lstlistlistingname}{\MakeUppercase{Daftar Kode}}
+
+% Penomoran Subsubsubbab
+\setcounter{secnumdepth}{3}
+
+\makeatletter
+\makeatother
+
+\setcounter{tocdepth}{3}
+
+% Captioning
+\captionsetup{format=hang, skip=0.5\baselineskip, labelsep=period}
